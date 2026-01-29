@@ -1,0 +1,16 @@
+# The Temple Premium: Fact or Folklore?
+
+While I didn't inlcude the datasets in this repository due to the size and licensing, here are the links were I obtained them:
+
+- **Temple Announcements and Dedications**: [3rd party website called churchofjesuschristtemples.org](https://churchofjesuschristtemples.org/statistics/timelines/)
+- **Demographic and Socioeconomic Data**: accessed via the [tidycensus R package](https://walker-data.com/tidycensus/) in the code.
+- **Real Estate Data**: [Zillow Research Data](https://www.zillow.com/research/data/). I used the "Zillow Home Value Index (ZHVI)" dataset at the zipcode level.
+- **Religion Census Data**: [Association of Religion Data Archives (ARDA)](https://www.thearda.com/data-archive?fid=RCMSCY10)
+
+You can run through the code sequentially in the 3 R scripts. Each script is standalone, independent, and contains comments to guide you through the process. The scripts are:
+
+1_eda.r: Exploratory Data Analysis (EDA) and initial tables used in some visualization.
+2_modeling.r: The core difference-in-differences modeling code.
+3_statistical_checks.r: Additional statistical checks and robustness tests.
+
+Please don't hesitate to reach out if you have any questions or need further assistance. Contact me at alex@bassempirical.com Thanks for caring about this analysis enough to make it this far!

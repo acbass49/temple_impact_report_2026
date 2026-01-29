@@ -1,0 +1,33 @@
+\usepackage{titling}
+\usepackage{graphicx}
+
+% 1. Create a container to hold the subtitle
+\newcommand{\mysubtitle}{}
+% 2. Tell Quarto: "When you see \subtitle, save it in \mysubtitle"
+\providecommand{\subtitle}[1]{}
+\renewcommand{\subtitle}[1]{\renewcommand{\mysubtitle}{#1}}
+
+% 3. Configure the Title (includes the Logo)
+\pretitle{%
+  \begin{center}
+  \LARGE
+  \includegraphics[width=0.25\linewidth]{logo.png}\\[1cm]
+}
+% 4. Configure the "Post-Title" to check for a subtitle and print it
+\posttitle{%
+  \par
+  % Check if \mysubtitle is empty. If not, print it.
+  \ifx\mysubtitle\empty
+  \else
+    \vspace{0.1em}    % Add a little space
+    {\large \itshape \mysubtitle} % Format the subtitle
+  \fi
+  \end{center}
+  \vskip 0.5em
+}
+
+% 5. Standard Author/Date setup
+\preauthor{\begin{center}\large}
+\postauthor{\par\end{center}}
+\predate{\begin{center}\large}
+\postdate{\par\end{center}}

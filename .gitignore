@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.DS_Store
+.Ruserdata
+*.log
+*.html
+*.csv
+*.rds
+*.sav
+*.txt
+*.TXT
+pre_release_temple_impact_report.pdf
