@@ -8,6 +8,5 @@
 *.csv
 *.rds
 *.sav
-*.txt
-*.TXT
+*.pdf
 pre_release_temple_impact_report.pdf
