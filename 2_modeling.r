@@ -166,6 +166,8 @@ data <- zillow_data |>
 data <- data |> 
     left_join(lds_data, by = c("state", "county"))
 
+# Because I am working with a computer 16GB RAM, clean up intermediate data
+
 rm(zillow_data)
 rm(control_data_final)
 rm(control_data_raw)
@@ -179,13 +181,11 @@ quaterly_model_data <- data  |>
     filter(year(date)>=2010) |>
     filter(year(Announced)>=2011 | is.na(Announced)) |>
     mutate(
-        # A. Create a "Month Index" (Continuous Counter)
-        #    Jan 2010 becomes 1, Feb 2010 becomes 2...
-        #    This ensures the gap between Dec and Jan is always 1 unit.
+        # A. Create a "Quarter Index" (Continuous Counter)
         quarter_index = (year(date) - 2010) * 4 + quarter(date), # Ensure 'date_column' exists
         
         # B. Fix the Treatment Group (gname)
-        #    We need to calculate the "Month Index" of the announcement.
+        #    We need to calculate the "Quarter Index" of the announcement.
         #    If announce_date is NA (control), set it to 0.
         treat_quarter_index = case_when(
             is.na(Announced) ~ 0,
@@ -226,7 +226,6 @@ gc()
 
 quaterly_model_data2 <- quaterly_model_data
 
-
 # Reset here if needed
 # quaterly_model_data <- quaterly_model_data2
 
@@ -253,6 +252,7 @@ es_quarterly <- aggte(out_quarterly, type = "dynamic", na.rm = TRUE)
 did::ggdid(es_quarterly)
 
 # Staggered Difference-in-Differences (DiD) model using the method developed by Callaway and Sant'Anna (2021)
+# WITH CONTROLS
 set.seed(123)
 out_quarterly_controls <- did::att_gt(
     yname = "log_price",
@@ -279,17 +279,14 @@ out_quarterly_controls <- did::att_gt(
 # This will show the effect in "Quarters Since Announcement"
 es_quarterly_controls <- aggte(out_quarterly_controls, type = "dynamic", na.rm = TRUE)
 
-es_quarterly_controls
-
-did::ggdid(es_quarterly_controls)
-
 # # 4. Plot the "High Definition" Bump
 # ggdid(es_quarterly) +
 #     labs(title = "The Temple Effect (Quarterly)", x = "Quarters Since Announcement")
 
-
 gc()
 
+# With Controls, by LDS Density Breaks
+# Low (<5%), Medium to High (>5%), and only High (>30%+)
 quaterly_model_data_high <- quaterly_model_data |> 
     filter(county_prop_lds>=5)
 
@@ -320,6 +317,7 @@ es_quarterly_high
 
 gc()
 
+# Only Very High LDS Density (>30%)
 quaterly_model_data_very_high <- quaterly_model_data |> 
     filter(county_prop_lds>=30)
 
@@ -346,10 +344,9 @@ out_quarterly_very_high <- did::att_gt(
 
 es_quarterly_very_high <- aggte(out_quarterly_very_high, type = "dynamic", na.rm = TRUE)
 
-es_quarterly_very_high
-
 gc()
 
+# Only low LDS Density (<5%)
 quaterly_model_data_low <- quaterly_model_data |> 
     filter(county_prop_lds<5)
 
@@ -376,15 +373,11 @@ out_quarterly_low <- did::att_gt(
 
 es_quarterly_low <- aggte(out_quarterly_low, type = "dynamic", na.rm = TRUE)
 
-es_quarterly_low
-
 gc()
 
-
-# Forest plot comparing all 3
+# results for each model was saved in model_results.txt
 
 # doing spot checks
-
 # How many temples are in each break?
 
 data |> 
@@ -408,23 +401,3 @@ data |>
     pull(temple) |> 
     unique() |> 
     length()
-
-data |> 
-    filter(year(date)>=2010) |>
-    filter(year(Announced)>=2011 | is.na(Announced)) |>
-    group_by(Zipcode) |> 
-    summarize(
-        county = unique(CountyName),
-        state = unique(State),
-        first_value = first(value),
-        last_value = last(value),
-                temple = unique(Temple),
-        county_prop_lds = unique(county_prop_lds),
-        Announced = unique(Announced),
-        first_year = min(year(date)),
-        last_year = max(year(date)),
-        n_obs = n()
-    ) |> 
-    filter(county_prop_lds>=30) |> 
-    drop_na(first_value) |> 
-    nrow()

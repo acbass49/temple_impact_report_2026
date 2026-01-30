@@ -166,6 +166,8 @@ data <- zillow_data |>
 data <- data |> 
     left_join(lds_data, by = c("state", "county"))
 
+# Because I am working with a computer 16GB RAM, clean up intermediate data
+
 rm(zillow_data)
 rm(control_data_final)
 rm(control_data_raw)

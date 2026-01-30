@@ -168,6 +168,8 @@ data <- zillow_data |>
 data <- data |> 
     left_join(lds_data, by = c("state", "county"))
 
+# Because I am working with a computer 16GB RAM, clean up intermediate data
+
 rm(zillow_data)
 rm(control_data_final)
 rm(control_data_raw)
@@ -248,13 +250,11 @@ quaterly_model_data <- data  |>
     filter(year(date)>=2010) |>
     filter(year(Announced)>=2011 | is.na(Announced)) |>
     mutate(
-        # A. Create a "Month Index" (Continuous Counter)
-        #    Jan 2010 becomes 1, Feb 2010 becomes 2...
-        #    This ensures the gap between Dec and Jan is always 1 unit.
-        quarter_index = (year(date) - 2010) * 4 + quarter(date), # Ensure 'date_column' exists
+        # A. Create a "Quarter Index" (Continuous Counter)
+        quarter_index = (year(date) - 2010) * 4 + quarter(date),
         
         # B. Fix the Treatment Group (gname)
-        #    We need to calculate the "Month Index" of the announcement.
+        #    We need to calculate the "Quarter Index" of the announcement.
         #    If announce_date is NA (control), set it to 0.
         treat_quarter_index = case_when(
             is.na(Announced) ~ 0,
@@ -302,8 +302,13 @@ treated_zips <- temples |>
 # 2. Initialize a storage container
 loo_results <- data.frame()
 
+# write.csv(loo_results, "./loo_results_tmp.csv", row.names = FALSE)
+# treated_zips <- treated_zips[28:43]
+
 # 3. Loop through each temple, drop it, and re-run
 # Note: This might take time due to bootstrapping. Reduce 'biters' if needed for speed testing.
+## ** be advised: this loop may take several hours to run depending on your hardware ** ##
+
 for (excluded_id in treated_zips) {
     
     message(paste("Running model without cluster:", excluded_id))
@@ -347,7 +352,7 @@ for (excluded_id in treated_zips) {
     gc()
 }
 
-# 4. (Optional) Add the "Full Model" baseline for comparison
+# 4. Add the "Full Model" baseline for comparison
 # Re-running your original model to get the 'simple' stats
 loo_results <- rbind(loo_results, data.frame(
     Excluded_Cluster = "Full Model (Baseline)",

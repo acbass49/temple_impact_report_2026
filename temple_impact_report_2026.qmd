@@ -472,7 +472,7 @@ To verify that our null result was not driven by outliers (e.g., a massive price
 
 Mormon Metrics is committed to the principles of open science and transparent econometrics. To facilitate peer review and replication of these findings, the complete codebase used to generate this report is publicly available.
 
-Code Repository: The R scripts and Quarto source files are hosted on GitHub at: [https://github.com/acbass49/temple_impact_report_2026](https://github.com/acbass49/temple_impact_report_2026)
+Code Repository: The R scripts and Quarto source files are hosted on GitHub at: [click here!](https://github.com/acbass49/temple_impact_report_2026)
 
 Methodology: The analysis relies on the did package (Callaway & Sant’Anna, 2021) for difference-in-differences estimation and tidyverse for data processing.
 
