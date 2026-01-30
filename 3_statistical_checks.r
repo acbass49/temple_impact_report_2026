@@ -302,9 +302,6 @@ treated_zips <- temples |>
 # 2. Initialize a storage container
 loo_results <- data.frame()
 
-# write.csv(loo_results, "./loo_results_tmp.csv", row.names = FALSE)
-# treated_zips <- treated_zips[28:43]
-
 # 3. Loop through each temple, drop it, and re-run
 # Note: This might take time due to bootstrapping. Reduce 'biters' if needed for speed testing.
 ## ** be advised: this loop may take several hours to run depending on your hardware ** ##
@@ -361,6 +358,8 @@ loo_results <- rbind(loo_results, data.frame(
     Lower_CI = -0.105,
     Upper_CI = 0.0528
 ))
+
+write.csv(loo_results, "./loo_results.csv", row.names = FALSE)
 
 # Create the Forest Plot
 forest_plot <- ggplot(loo_results, aes(x = ATT, y = reorder(Excluded_Cluster, ATT))) +

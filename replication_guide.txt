@@ -1,0 +1,17 @@
+Step 1: Download all data listed in the readme file.
+Step 2: Follow the instructions in each of the R scripts in order:
+  1_eda.r
+  2_modeling.r
+  3_statistical_checks.r
+
+View my model results and compare to yours:
+  model_results.txt
+
+Key challenges and decisions made during analysis:
+- The biggest challenge was that before 2010 Zillow data was missing for many zipcodes.
+Because of this, I had to limit my analysis to temples that were dedicated after 2010.
+- The monthly Zillow data was very noisy, so I aggregated to quarterly data to smooth out some of the noise.
+- I included a number of control variables to help isolate the effect of temple dedications on home values.
+- I decided to use announcement date as vibes and speculation often drive economic processes. In future 
+    analyses, I would like to compare announcement date effects to dedication date effects or
+    ground breaking effects.

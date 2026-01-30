@@ -13,4 +13,6 @@ You can run through the code sequentially in the 3 R scripts. Each script is sta
 2_modeling.r: The core difference-in-differences modeling code.
 3_statistical_checks.r: Additional statistical checks and robustness tests.
 
+Also, see replication_guide.txt for more details on how to replicate the analysis.
+
 Please don't hesitate to reach out if you have any questions or need further assistance. Contact me at alex@bassempirical.com Thanks for caring about this analysis enough to make it this far!

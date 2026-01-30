@@ -17,7 +17,7 @@ geometry: margin=1in
 
 # Executive Summary
 
-**The Question:** For decades, a common belief in the Intermountain West real estate market has been that the announcement of a Latter-day Saint temple guarantees a significant spike in neighboring property values. Real estate agents often cite a "Temple Premium" of 10–20%, pitching temple sites as sure-fire investment opportunities. This report investigates whether that premium is a causal result of the temple itself, or a statistical illusion.
+**The Question:** For decades, a common belief in the Intermountain West real estate market has been that the announcement of a Latter-day Saint temple guarantees a significant spike in neighboring property values. Some [real estate agents](https://universe.byu.edu/2019/10/08/new-temples-bring-excitement-and-higher-housing-prices/), [journalists](https://cowboystatedaily.com/2023/10/06/lds-temples-may-be-opposed-for-many-reasons-but-they-boost-property-values/), and [developers](https://bhroberts.org/records/0aH439-stEmCb/paul_gilbert_tells_arizona_republic_he_expects_the_temple_to_benefit_property_values) cite a "Temple Boost" or a "Temple Effect" of 10–20%, pitching temple sites as sure-fire investment opportunities. This report investigates whether that premium is a causal result of the temple itself, or a statistical illusion.
 
 **The Analysis:** We conducted a rigorous econometric analysis of 42 temple locations announced across the United States since 2011. Using a Staggered Difference-in-Differences (DiD) framework on 15 years of Zillow housing data, we isolated the price impact of the temple from broader regional market trends.
 
@@ -26,7 +26,7 @@ geometry: margin=1in
 **Key Findings:** 
 
 * The Premium is Real, But Misleading: In raw data, temple neighborhoods do outperform the national average, often trading at a 22% premium. 
-* The Cause is Selection, Not the Temple itself: This premium disappears when controlling for pre-existing demographic trends. Our analysis shows that the Church systematically selects sites in zip codes that are 35% wealthier, 69% more educated, and 447% more populous than the average zip code before the announcement is made.
+* The Cause is Selection, Not the Temple itself: This premium disappears when controlling for pre-existing demographic trends. Our analysis shows that the Church systematically selects sites in zip codes that are 35% wealthier, 69% more educated, and 447% more populous than the average zip code even years before the announcement is made.
 * The "Null" Result: After adjusting for these baseline advantages, the causal impact of a temple announcement on home values is statistically indistinguishable from zero (-2.6%, $p > 0.05$) though notably, we do not have the power to detect an effect of 5% or less (so a smaller effect is possible).
 
 **Conclusion:** The "Temple Premium" is driven by selection bias. The Church does not build temples in random areas that subsequently boom; it identifies neighborhoods that are already "winning" and places infrastructure there.
@@ -35,9 +35,9 @@ geometry: margin=1in
 
 # Introduction
 
-When The Church of Jesus Christ of Latter-day Saints announces a new temple, the local reaction is instant and deeply polarized.
+When The Church of Jesus Christ of Latter-day Saints announces a new temple, there can be many local reactions.
 
-On one side, real estate agents and faithful investors see dollar signs. They circulate the folklore of the "Temple Premium"—a belief that the arrival of a temple acts as a divine anchor, guaranteeing that neighboring home values will skyrocket by 10% to 20%. To them, the temple is the ultimate amenity.
+On one side, real estate agents and faithful investors see dollar signs. They circulate the folklore of the "Temple Boost"—a belief that the arrival of a temple acts as a divine anchor, guaranteeing that neighboring home values will skyrocket by 10% to 20% or even double. To them, the temple is the ultimate amenity.
 
 On the other side, concerned residents and "Not In My Backyard" (NIMBY) groups foresee a crisis. They argue that the increased traffic, 100-foot steeples, and the floodlights will turn their quiet streets into commercial zones, rendering their homes "unmarketable" and dragging property values down.
 
@@ -47,7 +47,7 @@ We conducted the largest-ever econometric analysis of temple housing markets, an
 
 The results are decidedly unsatisfying for the ideologues on both sides:
 
-To the Critics: There is no evidence that temples destroy property values at least at the community/neighborhood level. While immediate neighbors may experience localized nuisance effects, our data confirms these are not severe enough to drag down the broader zip code.
+To the Critics: There is no evidence that temples destroy property values at least at the community/neighborhood level. While immediate neighbors may experience localized nuisance effects, our data confirms these are not severe enough (if they do exist) to drag down the broader zip code.
 
 To the Faithful: There is no causal evidence that temples create wealth. Once you control for the pre-existing momentum of the neighborhood, the "Temple Premium" vanishes compared to the model without controls. As noted in the executive summary, a more modest premium of 5% or less is still possible. We just rule out more than that.
 
@@ -59,7 +59,7 @@ The data reveals that the "Temple Premium" is likely mostly an illusion of Site 
 
 In short: The Church doesn't create the real estate wave. It surfs it.
 
-The wave is *real* — prices in these areas do go up — but the temple is just another passenger on the ride, likely not the engine driving it.
+The wave is *real* — prices in these areas do go up — but the temple is just another passenger on the ride, not the engine driving it.
 
 \newpage
 
@@ -113,7 +113,7 @@ The Limitation: We treat the public "Announcement Date" as the start of the trea
 
 The Risk: Prices may have started rising before our official "Day 0," meaning our model attributes that growth to "Pre-Trend" demographics rather than the temple itself.
 
-The Defense: Our event-study plots (Figure 5) allow us to visually inspect the pre-announcement period. We found no statistically significant 'pre-loading' of prices in the 12 months prior to announcement, suggesting that information leakage was not a primary driver of price appreciation in these markets.
+The Defense: Our event-study plots (Figure 5 in the technical appendix) allow us to visually inspect the pre-announcement period. We found no statistically significant 'pre-loading' of prices in the 12 months prior to announcement, suggesting that information leakage was not a primary driver of price appreciation in these markets.
 
 4. County-Level Religious Data
 
@@ -139,11 +139,10 @@ One theory of temple building suggests a "Missionary Model"—that temples are b
 
 The data reveals the opposite.
 
-Our analysis of Census records for 80 temple sites compared to the national averages establishes a clear "Winner’s Profile." The Church systematically selects neighborhoods that are already winning economicly years before the announcement is made.
+Our analysis of Census records for 80 temple sites compared to the national averages establishes a clear "Winner’s Profile." The Church systematically selects neighborhoods that are already winning economically years before the announcement is made.
 
 ![The Demographic Head Start Comparison of Temple Zip Codes vs. Non-Temple Control Zips (2000 Census Baseline)](./images/images.003.jpeg){width=70% fig-align="center"}
 
-The "Selection Bias" Formula
 As shown in Figure 2, the demographic gap between a "Temple Zip Code" and a "Control Zip Code" is not a margin of error; it is a canyon.
 
 **Decoding the Data**
@@ -166,8 +165,6 @@ If you ask a casual observer whether temples increase home values, the answer ap
 
 ![The 'Temple Premium' Illusion. Raw home prices (Red) surge after announcement, but the causal effect (Blue) is zero when controlling for pre-existing demographic trends.](./images/images.001.jpeg){width=70% fig-align="center"}
 
-Figure 3 tracks the price trajectory of temple neighborhoods relative to the control group. The red line represents the unadjusted, raw market data—the numbers that real estate agents and homeowners actually see in their Zillow estimates.
-
 As the red line demonstrates, temple zip codes do not just beat the market; they crush it.The "Rocket Ship" Effect: Immediately following the announcement, the raw premium begins a steady, upward march.
 
 Our unadjusted model (Model 1) confirms a statistically significant "Temple Premium" of 21.9% ($p < 0.05$). If this were the only model we ran, it would validate the folklore entirely. A 22% jump is exactly what real estate agents promise.
@@ -181,7 +178,7 @@ This result is statistically indistinguishable from zero ($p > 0.05$).**"But cou
 Lower Bound: -10.5%   
 Upper Bound: +5.3%
 
-This finding is critical. While we cannot statistically rule out a small positive effect (up to 5.3%), we can definitively rule out the massive 10–20% spikes promised by the folklore. Even in the most optimistic statistical scenario, at least 75% of the observed appreciation in temple neighborhoods is driven by Selection Bias (demographics), not the temple itself. In summary, The "Temple Premium" is not a real estate phenomenon; it is a selection phenomenon. The Church on average picks places that see future growth, but it is not the engine creating it.
+This finding is critical. While we cannot statistically rule out a small positive effect (up to 5.3%), we can definitively rule out the massive 10–20% spikes promised by the folklore. Even in the most optimistic statistical scenario, at least 75% of the observed appreciation in temple neighborhoods is driven by Selection Bias (demographics), not the temple itself. In summary, The "Temple Premium" is not a real estate phenomenon; it is likely a selection phenomenon. The Church on average picks places that see future growth, but it is not the engine creating it.
 
 \newpage
 
@@ -193,7 +190,7 @@ Economically, a temple is a "polarizing amenity."
 
 In "Zion" (Utah/Idaho): It is a highly desirable asset. A significant portion of the population holds a temple recommend and values a short commute for worship and weddings. Here, we would expect the "Temple Premium" to be real.
 
-In the "Mission Field" (e.g., Boston/New York): It is often viewed as a "disamenity." Residents may view it not as a holy site, but as a commercial-scale structure that brings traffic and lighting to residential zones. Here, critics argue, the impact should be negative.
+In the "Mission Field" (e.g., Boston/New York): It could be viewed as a "disamenity." Residents may view it not as a holy site, but as a commercial-scale structure that brings traffic and lighting to residential zones. Here, critics argue, the impact should be negative.
 
 To test this, we experimented with 3 breaks based on the religious density of the county: Sparse (<5% LDS), Moderate (>5% LDS), and Dense (>30% LDS).
 
@@ -203,7 +200,7 @@ If the "Temple Premium" exists anywhere, it should be in counties where over 30%
 
 And what we find is even in these high-density strongholds, the causal effect remains statistically indistinguishable from zero. While the model (Model 5) detects a slight directional bump of +1.7%, the result is drowned out by the noise (Confidence Interval: -5.7% to +9.1%). Even in neighborhoods where the temple is culturally beloved, it does not act as a statistically significant independent driver of appreciation. The high prices in these areas are driven by the fact that they are wealthy suburbs of Salt Lake City or Boise, not because of the steeple.
 
-Conversely, counties with less than 5% LDS population represent the "Worst Case Scenario." These are the areas where temple announcements frequently face lawsuits and protests (e.g., Cody, WY; Harrison, NY) over fears of property devaluation. What we find is the "NIMBY" fears are unfounded, at least at a community level (houses immediately bordering we cannot say). The causal impact in these areas is 0.4% — effectively zero. Temples do not likely crash property values in non-LDS neighborhoods. The "nuisance effects" of traffic or lighting are either negligible at the community level or perhaps are offset by the improvement in neighborhood aesthetics (landscaping, infrastructure).
+Conversely, counties with less than 5% LDS population represent the "Worst Case Scenario." These are the areas where temple announcements frequently face lawsuits and protests (e.g., Cody, WY; Harrison, NY) over fears of property devaluation. We found no evidence of neighborhood-wide devaluation. The causal impact in these areas is 0.4% — effectively zero. Temples do not likely crash property values in non-LDS neighborhoods. The "nuisance effects" of traffic or lighting are either negligible at the community level or perhaps are offset by the improvement in neighborhood aesthetics (landscaping, infrastructure).
 
 Whether in a county that is 2% LDS or 80% LDS, the fundamental drivers of home value remain the same: income, education, and population growth.
 
@@ -221,7 +218,7 @@ In markets with low LDS populations (<5%), the causal effect is effectively zero
 
 However, in "Zion" markets (counties with >30% LDS population), the model detects a noticeable directional shift, with the coefficient rising to +1.7%. While this finding remains within the margin of error, the increased magnitude suggests that Cultural Utility is attempting to price itself into the market.
 
-Economically, this directional lift likely reflects the difference between a Passive Amenity and an Active Necessity.
+Economically, this directional lift could reflect the difference between a Passive Amenity and an Active Necessity.
 
 In the Mission Field (e.g., Hartford, CT): The temple functions as a "Passive Amenity"—like a botanical garden. Neighbors enjoy the view, but they do not use the building.
 
@@ -231,9 +228,9 @@ If the demand is so high in Utah, why isn't the premium statistically significan
 
 In the early 20th century, living near a temple was a rare privilege. Today, the Wasatch Front is so densely populated with temples (Salt Lake, Draper, Oquirrh Mountain, Jordan River, Taylorsville, etc.) that "temple proximity" has lost its scarcity for some regions.
 
-The Scarcity Principle: A homebuyer does not need to pay a 10% premium to live near a temple when almost every suburb in the Salt Lake Valley is now within a 15-minute drive of one.
+**The Scarcity Principle: A homebuyer does not need to pay a 10% premium to live near a temple when almost every suburb in the Salt Lake Valley is now within a 15-minute drive of one.**
 
-Conclusion: The positive directional signal in high-LDS areas could suggest that members do value proximity, acting as a "tie-breaker" when choosing between similar homes. However, the saturation of temples in these regions may ensure that this preference never hardens into a measurable financial premium. The amenity may be too abundant to be expensive.
+The positive directional signal in high-LDS areas could suggest that members do value proximity, acting as a "tie-breaker" when choosing between similar homes. However, the saturation of temples in these regions may ensure that this preference never hardens into a measurable financial premium. The amenity may be too abundant to be expensive.
 
 \newpage
 
@@ -245,7 +242,7 @@ For real estate investors, these findings suggest that a strategy based solely o
 
 For residential homebuyers, this analysis offers a nuanced perspective on the high costs often associated with temple neighborhoods. While prices in these areas are indeed higher than the national average, the evidence suggests this valuation is perhaps a reflection of established community amenities—such as school quality, safety, and neighborhood stability—rather than a speculative bubble driven by the temple itself. Buyers paying a premium in these zones are likely paying for the tangible economic characteristics of the neighborhood, not a unique "temple effect." Consequently, while these homes appear to be stable investments that retain value, buyers should not necessarily expect the arrival of the temple to trigger a new, independent wave of appreciation beyond what the local market's demographics would otherwise dictate.
 
-Finally, for residents concerned about the potential negative externalities of new construction, the data provides no evidence to support the fear that temples depress local property values. Even in markets where the non-LDS population is dominant and sensitivity to new development is high, our model detects no statistically significant negative impact on housing prices following a temple announcement. This suggests that any potential localized inconveniences, such as increased traffic or lighting, could be balanced by the capitalization of the new landscaping, infrastructure improvements, and the general maintenance of the site. The absence of a negative price signal implies that the market views the temple as a neutral neighbor rather than a disamenity. However, our confidence intervals indicate that if there is negative impact it would be less than 10%, so a price impact is still possible.
+Finally, for residents concerned about the potential negative externalities of new construction, the data provides no evidence to support the fear that temples depress local property values. Even in markets where the non-LDS population is dominant and sensitivity to new development is high, our model detects no statistically significant negative impact on housing prices following a temple announcement. This suggests that any potential localized inconveniences, such as increased traffic or lighting, could be balanced by the capitalization of the new landscaping, infrastructure improvements, and the general maintenance of the site. The absence of a negative price signal implies that the market views the temple as a neutral neighbor rather than a disamenity. However, our confidence intervals indicate that if there is negative impact it would be less than 10%, so a notable price impact is still possible.
 
 ## Urban Planners + Economists
 
@@ -257,11 +254,11 @@ For economists, this study contributes to the broader literature on amenity capi
 
 For sociologists examining the Church of Jesus Christ of Latter-day Saints, these findings illuminate a complex intersection between sacred space and socioeconomic stratification. The data suggests that the "gathering" of the faithful is increasingly occurring within specific, high-capital enclaves. Because temple site selection is strongly correlated with indicators of upper-middle-class status—specifically high educational attainment and established wealth—proximity to the temple is becoming effectively "bundled" with high costs of living. This geographic sorting suggests that the spiritual ideal of living "in the shadow of the temple" is increasingly becoming a luxury good, accessible primarily to households that have already achieved a certain level of economic security. This creates a potential tension within the faith’s egalitarian ethos, where the physical center of community worship is structurally embedded within neighborhoods that may be inaccessible to younger families, recent converts, or lower-income members.
 
-Furthermore, the persistence of the "Temple Premium" folklore warrants sociological inquiry into how religious communities construct economic narratives to validate spiritual decisions. The belief that a temple causes wealth (via appreciation) rather than following it functions as a powerful form of communal signaling. It allows members to frame the high cost of entry into these neighborhoods not as a barrier, but as a divine validation of the community’s prosperity. However, the reality of the data presents a "demographic paradox" for the institution: by systematically placing temples in areas with high population momentum and cost appreciation, the Church ensures the financial stability of the site but may inadvertently accelerate the gentrification of its own core gathering places, potentially displacing the very demographic—young, growing families—it seeks to serve.
+Furthermore, the persistence of the "Temple Premium" folklore warrants sociological inquiry into how religious communities construct economic narratives to validate spiritual decisions. The belief that a temple causes wealth (via appreciation) rather than following it functions as a powerful form of communal signaling. It allows members to frame the high cost of entry into these neighborhoods not as a barrier, but as a divine validation of the community’s prosperity. However, the reality of the data presents a "demographic paradox" for the institution: by systematically placing temples in areas with high population and cost appreciation, the Church ensures the financial stability of the site but may inadvertently accelerate the gentrification of its own core gathering places, potentially displacing the very demographic—young, growing families—it seeks to serve.
 
 Finally, these findings challenge the assumption that spiritual devotion translates directly into a desire for immediate physical proximity. The absence of a hyper-local price spike suggests that Latter-day Saint homebuyers operate according to a rational "Hierarchy of Residential Needs."
 
-Unlike a primary school or a commuter train station—amenities that a family utilizes five days a week—temple attendance is, for most members, a monthly or quarterly activity. Consequently, the marginal utility of living immediately adjacent to a temple (a 2-minute walk) could be similar to living within a standard suburban driving radius (a 20-minute drive).
+Unlike a primary school or a commuter train station—amenities that a family utilizes five days a week—temple attendance is, for many members, a monthly or quarterly activity. Consequently, the marginal utility of living immediately adjacent to a temple (a 2-minute walk) could be similar to living within a standard suburban driving radius (a 20-minute drive).
 
 Our data indicates that while members value access to the temple, they may prioritize high-frequency necessities—such as school district quality and commute times to employment centers—over lower-frequency spiritual amenities. In this context, the temple functions as a "Regional Anchor" rather than a neighborhood necessity. It confirms that the broader region is a spiritually and socially viable place to live, but it may not compel members to sacrifice economic or practical needs to live next door.
 
@@ -269,13 +266,13 @@ Our data indicates that while members value access to the temple, they may prior
 
 # Conclusion
 
-The persistent belief in a "Temple Premium"—a guaranteed 10–20% increase in property values following the announcement of a Latter-day Saint temple—occupies a unique space in the real estate folklore of the Intermountain West. It is a narrative that satisfies both the faithful, who view it as evidence of divine blessing, and the speculative investor, who views it as an arbitrage opportunity.
+The "Temple Premium"—a guaranteed 10–20% increase in property values following the announcement of a Latter-day Saint temple—occupies a unique space in the real estate folklore of the Intermountain West. It is a narrative that satisfies both the faithful, who view it as evidence of divine blessing, and the speculative investor, who views it as an arbitrage opportunity.
 
 This study sought to subject this narrative to rigorous econometric scrutiny. By analyzing 15 years of housing data across 42 temple locations and employing a Staggered Difference-in-Differences framework, we attempted to isolate the causal impact of the temple from the noise of the broader market.
 
-Our findings offer a likely resolution to the "Chicken or Egg" paradox. While homes in temple zip codes undeniably appreciate faster than the national average, the data indicates that this growth is not caused by the temple. Rather, the temple is systematically placed in neighborhoods that are already experiencing strong growth trajectories driven by fundamental economic forces. The "Temple Premium," therefore, is likely an artifact of Site Selection Bias. The Church’s selection criteria favor zip codes with high educational attainment, established household wealth, and robust population characteristics—the very factors that urban economists identify as the primary drivers of appreciation.
+Our findings offer a likely resolution to the "Chicken or Egg" paradox. While homes in temple zip codes undeniably appreciate faster than the national average, the data indicates that the primary driver of this growth is not caused by the temple. Rather, the temple is systematically placed in neighborhoods that are already experiencing strong growth trajectories driven by fundamental economic forces. The "Temple Premium," therefore, is likely an artifact of Site Selection Bias. The Church’s selection criteria favor zip codes with high educational attainment, established household wealth, and robust population characteristics—the very factors that urban economists identify as the primary drivers of appreciation.
 
-Crucially, this "Null Result" holds across all cultural contexts. Whether in the high-density "Zion" markets of Utah—where demand for the amenity is highest—or in the low-density "Mission Field" markets where resistance is common, the causal impact of the structure itself remains statistically indistinguishable from zero (though a more modest result may be possible <=5%). This suggests that the market typically values the neighborhood’s demographics, not its proximity to the temple steeple.
+Crucially, this "Null Result" holds across all cultural contexts from what we can detect. Whether in the high-density "Zion" markets of Utah—where demand for the amenity is highest—or in the low-density "Mission Field" markets where resistance is more common, the causal impact of the structure itself remains statistically indistinguishable from zero. Though as temples continue to be built, a more modest price increase or decrease may be detectable in higher powered future studies.
 
 For the stakeholder, this conclusion requires a shift in perspective. The temple should not be viewed as a catalyst that transforms a neighborhood’s financial trajectory, but rather as a Lagging Indicator of its maturity. Its arrival confirms that a community has achieved a threshold of stability and affluence, serving as an institutional "Seal of Approval" rather than a generator of new wealth. Ultimately, the value of a home in a temple neighborhood is real, but it is derived from the high human capital of the residents next door, not likely the granite edifice down the street.
 
@@ -354,6 +351,56 @@ Table 1 presents the primary estimation results, contrasting the unadjusted mark
 * Attenuation of the Effect (Model 2): However, upon introducing controls for pre-existing wealth and demographic covariates (Model 2), the coefficient attenuates markedly to -0.0261 and becomes statistically indistinguishable from zero (95% CI: $[-0.105, 0.053]$). The disappearance of the effect in the fully specified model suggests that the positive coefficient observed in Model 1 is likely driven by endogenous site selection—specifically, the tendency for temples to be located in areas with favorable pre-existing economic trajectories—rather than a causal treatment effect of the announcement itself.
 
 * Consistency Across Sub-samples (Models 3–5): This null result appears robust across varying levels of LDS population density. Whether in low-density (<5%), moderate-density (>5%), or high-density (>30%) regions, the estimated coefficients remain statistically insignificant. These results provide little evidence to support the hypothesis that temple announcements generate structural breaks in local housing appreciation rates independent of broader economic trends.
+
+## List of Temples
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-cap: "List of 42 Temple Announcements Included in Analysis"
+#| label: tbl-temples
+
+library(lubridate)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+temple_list <- read.csv('./temples.csv') |> 
+  mutate(
+    Announced = mdy(Announced),
+    Zipcode = stringr::str_pad(Zipcode, width = 5, side = "left", pad = "0")
+    ) |> 
+  filter(year(Announced)>=2011) |> 
+  filter(Zipcode != "84627") |> 
+  select(Temple, Announced, Zipcode)
+
+temple_list %>%
+  # 1. Clean up columns for display
+  select(Temple, Announced, Zipcode) %>%
+  arrange(desc(Announced)) %>%
+  
+  # 2. Rename columns to look professional
+  rename(
+    "Temple Name" = Temple,
+    "Announcement Date" = Announced
+  ) %>%
+  
+  # 3. Create the table
+  # 'longtable = TRUE' allows it to span multiple pages if needed
+  kbl(booktabs = TRUE, longtable = TRUE) %>% 
+  
+  # 4. Style it
+  kable_styling(
+    bootstrap_options = c("striped", "hover"), 
+    latex_options = c("striped", "hold_position", "repeat_header"),
+    font_size = 10, # Shrink slightly to fit nicely
+    full_width = FALSE
+  )
+
+```
+
+Originally, I had planned to include about 80 temples announced since 2000; however, due to the sparsity of zillow data before 2010, I decided to filter to temples announced 2011 and after (43 temples) giving at least a full year of complete pretrend zillow data. There was one temple not included in the Zillow data likely because of its rural location. This temple is Ephraim Utah in zip code 84627. All other temples announced in the US since 2011 are included (42 temples). I also filtered specifically to those that had the ground broken by December of 2025 -- meaning for every temple in this list, there is either a completed temple in the zip code or a current temple construction site in the most recent Zillow data.
 
 ## Robustness Checks
 
@@ -460,20 +507,20 @@ Collectively, these dynamic estimates provide robust evidence that the introduct
 
 A central challenge in causal inference is ensuring that the control group serves as a valid counterfactual for the treated group—comparing "apples to apples." To verify this, we evaluated the Common Support assumption by estimating propensity scores for all zip codes in the analysis universe. This metric represents the predicted probability of a zip code being selected for a temple site based solely on its baseline economic and demographic characteristics (e.g., income, family structure, and LDS density).
 
-As illustrated in Figure 5, the density distributions of the Treated and Control groups exhibit substantial overlap within the relevant demographic stratum (>3% LDS counties). This indicates that our dataset contains a rich set of "Control" zip codes that possess the high-income, family-oriented, and high-LDS characteristics typical of temple sites, yet were not selected for construction. The existence of these "twin" zip codes confirms that the null results observed in our primary analysis are not an artifact of poor matching (e.g., comparing wealthy suburbs to dissimilar rural areas) but reflect a genuine absence of a treatment effect when comparing demographically equivalent markets.
+As illustrated in Figure 6, the density distributions of the Treated and Control groups exhibit substantial overlap within the relevant demographic stratum (>3% LDS counties). This indicates that our dataset contains a rich set of "Control" zip codes that possess the high-income, family-oriented, and high-LDS characteristics typical of temple sites, yet were not selected for construction. The existence of these "twin" zip codes confirms that the null results observed in our primary analysis are not an artifact of poor matching (e.g., comparing wealthy suburbs to dissimilar rural areas) but reflect a genuine absence of a treatment effect when comparing demographically equivalent markets.
 
 #### Leave One Out Analysis
 
 ![Leave-One-Out Sensitivity Analysis. Stability of the causal estimate when excluding individual temple cohorts. Each point represents the re-estimated treatment effect (ATT) after dropping the temple listed on the y-axis. The error bars (95% confidence intervals) consistently cross zero, demonstrating that the null result is robust to the exclusion of any single market.](./images/loo_forest_plot.png){width=70% fig-align="center"}
 
-To verify that our null result was not driven by outliers (e.g., a massive price spike in St. George masking a crash in Provo), we conducted a "Leave-One-Out" analysis. We re-estimated the causal model 42 times, dropping a different temple cohort in each iteration. As shown in Figure A3, the estimated effect remains statistically indistinguishable from zero in every single iteration. This confirms that the absence of a "Temple Premium" is a structural feature of the housing market, not an artifact of any specific city or timeframe.
+To verify that our null result was not driven by outliers (e.g., a massive price spike in St. George masking a crash in Provo), we conducted a "Leave-One-Out" analysis. We re-estimated the causal model 42 times, dropping a different temple cohort in each iteration. As shown in Figure 7, the estimated effect remains statistically indistinguishable from zero in every single iteration. This confirms that the absence of a "Temple Premium" is a structural feature of the housing market, not an artifact of any specific city or timeframe.
 
 ## Code Repository & Replication Guide
 
 Mormon Metrics is committed to the principles of open science and transparent econometrics. To facilitate peer review and replication of these findings, the complete codebase used to generate this report is publicly available.
 
-Code Repository: The R scripts and Quarto source files are hosted on GitHub at: [click here!](https://github.com/acbass49/temple_impact_report_2026)
+Code Repository: The R scripts and Quarto source files are hosted on GitHub at: [click here!](https://github.com/acbass49/temple_impact_report_2026) Please see the repository for the replication guide and analysis decisions.
 
 Methodology: The analysis relies on the did package (Callaway & Sant’Anna, 2021) for difference-in-differences estimation and tidyverse for data processing.
 
-Data Access: Due to licensing restrictions regarding granular real estate transaction data, the raw housing dataset cannot be publicly redistributed. However, the aggregated datasets used for the Event Study plots and researchers seeking to replicate the results using their own data subscriptions may contact the author directly for guidance on file structure and variable definitions. In the readme, I have information on where I downloaded each dataset.
+Data Access: Due to licensing restrictions regarding granular real estate data, the raw housing dataset cannot be publicly redistributed. In the readme in the repository linked above, I have information on where I downloaded each dataset.
