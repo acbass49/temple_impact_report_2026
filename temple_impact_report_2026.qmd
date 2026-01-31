@@ -330,6 +330,22 @@ Paper: The Elusive Economic Blessings of Tithing: Mormon Temples and County Pove
 
 Relevance to our study: This finding is the "economic cousin" to our housing results. It confirms a broader pattern: while the Church selects areas that are already wealthy (as our data shows), the institution itself does not appear to generate wealth or alleviate economic hardship for the surrounding community. It reinforces the conclusion that the "Spiritual Economy" of the temple does not mechanically translate into the "Real Economy" of the county.
 
+## Econometric Identification Strategy
+
+To estimate the causal impact of temple announcements on housing values, we utilize the Callaway & Sant'Anna (2021) estimator for staggered treatment adoption. This framework addresses two critical failures of standard Two-Way Fixed Effects (TWFE) models in this context: (1) it allows for treatment effects to vary over time (heterogeneity), and (2) it avoids the "negative weighting bias" where early-treated units act as bad controls for late-treated units (Goodman-Bacon, 2021).
+
+1. **Identification Strategy: Group-Time Average Treatment Effects** We estimate the group-time average treatment effect, denoted as $ATT(g,t)$, which measures the average treatment effect for the cohort of zip codes first treated in period $g$ at calendar time $t$.$$ATT(g,t) = \mathbb{E}[Y_t - Y_{g-1} \mid G_g = 1] - \mathbb{E}[Y_t - Y_{g-1} \mid C_t = 1]$$ Where: 
+* $Y_t$ is the outcome (log Zillow Home Value Index) at time $t$
+* $G_g = 1$ denotes the group of zip codes where a temple was announced in period $g$
+* $C_t = 1$ denotes the "not-yet-treated" control group. This includes both units that are never treated in the sample and units that are treated at some future period $g > t$
+* $t$ is the current time period, and $g-1$ is the reference period immediately prior to treatment.
+
+2. **Conditional Parallel Trends Assumption** Given that temple site selection is non-random (often targeting areas with specific growth or demographic profiles), the standard unconditional parallel trends assumption is unlikely to hold. We therefore invoke the Conditional Parallel Trends assumption. We assume that, conditional on a vector of baseline covariates $X$ (measured at the 2000 Census baseline), the average potential outcomes for the treated and control groups would have followed parallel paths in the absence of treatment:$$\mathbb{E}[Y_t(0) - Y_{g-1}(0) \mid X, G_g = 1] = \mathbb{E}[Y_t(0) - Y_{g-1}(0) \mid X, C_t = 1]$$Our vector $X$ includes baseline log income, population density, homeownership rates, share of households with children, and education levels, alongside State Fixed Effects to account for unobserved regional heterogeneity.
+
+3. **Estimation Method: Outcome Regression** To estimate $ATT(g,t)$ under this assumption, we employ the Outcome Regression (OR) approach (via the did package in R). We fit a linear regression model of the change in outcomes $\Delta Y_t = Y_t - Y_{g-1}$ for the control group as a function of covariates $X$:$$\Delta Y_t = \alpha + X'\beta + \epsilon$$We then project these estimated counterfactual trends onto the treated group to recover the causal effect:$$\widehat{ATT}(g,t) = \frac{1}{N_g} \sum_{i \in G_g} \left( (Y_{i,t} - Y_{i,g-1}) - \hat{m}_{g,t}(X_i) \right)$$Where $\hat{m}_{g,t}(X_i)$ is the predicted change in the outcome for unit $i$ based on the control group's conditional evolution.
+
+4. **Aggregation (Event Study Specification)** To examine the dynamic evolution of treatment effects and test for pre-trends (as shown in Figure 5), we aggregate the individual group-time average treatment effects according to "event time" $e = t - g$ (the quarters elapsed since announcement). We estimate the Event Study Average Treatment Effect $ATT_{es}(e)$:$$\widehat{ATT}_{es}(e) = \sum_{g} \sum_{t} \mathbb{1}(t - g = e) \cdot w_{g,t} \cdot \widehat{ATT}(g,t)$$Where $\mathbb{1}(t - g = e)$ is an indicator function that selects all group-time pairs that are exactly $e$ periods away from treatment, and $w_{g,t}$ are weights based on group size. This allows us to estimate the causal effect for each quarter before and after the announcement, providing a direct test of the parallel trends assumption (where $e < 0$) and the treatment effect trajectory (where $e \ge 0$).
+
 ## Regression Results
 
 :Summary of Causal Effects (Staggered Difference-in-Differences)
